@@ -1,0 +1,25 @@
+{% include 'navbar.html' %}
+
+<body>
+     <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for book in books %}
+                <tr>
+                        <th>{{ book.id }}</th>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.status }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+     </table>
+</body>
+

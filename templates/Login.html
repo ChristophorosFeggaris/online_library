@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Student Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="{% static '/css/main.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
+    </head>
+    <body>
+        <!-- main -->
+        <div class="main-w3layouts wrapper">
+            <h1>Login Student</h1>
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        <input class="text" type="text" name="username" placeholder="Username" required="">
+                        <input class="text" type="password" name="password" placeholder="Password" required="">
+                        <input type="submit" value="LOGIN">
+                    </form>
+                    <p>Already have an Account? <a href="{% url 'signup' %}"> Sign up Now!</a></p>
+                </div>
+            </div>
+            <!-- //copyright -->
+            <ul class="colorlib-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- //main -->
+    </body>
+</html>
+
+
+
+<!--
+<body>
+        <h2>Login user here:</h2>
+        <form method="post">
+
+          <div class="mb-3 col-lg-6  justify-content-sm-center">
+            <label  class="form-label">Username</label>
+            <input type="username" class="form-control form-control-sm" name="username">
+          </div>
+          <div class="mb-3 col-lg-6">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control form-control-sm" name="password" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <span>Don't have an account? Create one <a href="{% url 'signup' %}">here!</a></span>
+</body>
+
+-->
+
