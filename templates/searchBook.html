@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if books %}
+        <h2>You searched for {{ books }}</h2>
+        {% for book in books %}
+            {{ book }}
+        {% endfor %}
+    {% else %}
+        <h2>Oupss! There's not any book with this name!</h2>
+    {% endif %}
+{% endblock %}
+
