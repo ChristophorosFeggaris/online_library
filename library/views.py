@@ -10,7 +10,7 @@ from .models import Book
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'home.html')
 
 @login_required(login_url='login')
 def add_book(request):
@@ -32,7 +32,11 @@ def show_book(request):
 
 @login_required(login_url='login')
 def search_book(request):
-    pass
+    if request.method == 'POST':
+        search_book = request.POST['searched_book']
+        books = Book.objects.filter(title__contains='search_book')
+    context = {'books':books}
+    return render(request, 'searchBook.html', context)
 
 @login_required(login_url='login')
 def delete_book(request):
