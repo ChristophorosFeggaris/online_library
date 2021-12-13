@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <h1>Hello Online Library!</h1>
-
+    {% if user.is_authenticated %}
+        <h1>Hello {{ user }} on Online Library!</h1>
+    {% endif %}
 {% endblock %}

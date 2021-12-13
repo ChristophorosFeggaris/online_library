@@ -17,15 +17,22 @@ def add_book(request):
     form = BookForm()
 
     if request.method == 'POST':
-        form = BookForm(request.POST)
+        form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('ListBook')
 
     context = {'form': form}
     return render(request, 'addBook.html', context)
 
 @login_required(login_url='login')
-def show_book(request):
+def book_details(request, pk):
+    book = Book.objects.get(id=pk)
+    context = {'book': book}
+    return render(request, 'bookdetails.html', context)
+
+@login_required(login_url='login')
+def show_books(request):
     books = Book.objects.all()
     context = {'books': books}
     return render(request, 'allBooks.html', context)
@@ -33,14 +40,35 @@ def show_book(request):
 @login_required(login_url='login')
 def search_book(request):
     if request.method == 'POST':
-        search_book = request.POST['searched_book']
-        books = Book.objects.filter(title__contains='search_book')
-    context = {'books':books}
-    return render(request, 'searchBook.html', context)
+        search_book = request.POST.get('searched_book')
+        books = Book.objects.filter(title__contains=search_book)
+        context = {'search_book': search_book,'books': books}
+        return render(request, 'searchBook.html', context)
+    else:
+        return render(request, 'searchBook.html', {})
 
 @login_required(login_url='login')
-def delete_book(request):
-    pass
+def update_book(request, pk):
+    book = Book.objects.get(id=pk)
+    form = BookForm(instance=book)
+
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('detailBook', pk=book.id)
+
+    context = {'form': form, 'book': book}
+    return render(request, 'editBook.html', context)
+
+@login_required(login_url='login')
+def delete_book(request, pk):
+    book = Book.objects.get(id=pk)
+    if request.method == 'POST':
+        book.delete()
+        return redirect('ListBook')
+    context = {'book': book}
+    return render(request, 'deleteBook.html', context)
 
 def login_student(request):
 

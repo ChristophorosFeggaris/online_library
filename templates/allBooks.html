@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
-     <table class="table">
-          <thead>
+     <table class="table" >
+          <thead class="columns">
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Title</th>
@@ -10,13 +11,15 @@
               <th scope="col">Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style="background-color: #83BE63;">
             {% for book in books %}
                 <tr>
                         <th>{{ book.id }}</th>
                         <td>{{ book.title }}</td>
                         <td>{{ book.author }}</td>
                         <td>{{ book.status }}</td>
+                        <td><a href="{% url 'detailBook' book.id %}" target="_blank"><input type="submit" name="detail" value="Details" ></a></td>
+                    <td><a href="{% url 'delete_book' book.id %}" target="_blank"><input type="submit" name="delete" value="Delete"></a></td>
                 </tr>
             {% endfor %}
           </tbody>

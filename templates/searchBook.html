@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if books %}
-        <h2>You searched for {{ books }}</h2>
+    {% if search_book %}
+        <h2>You searched for '{{ search_book }}'</h2>
+        <p><strong>Results:</strong></p>
         {% for book in books %}
             {{ book }}
         {% endfor %}
