@@ -72,7 +72,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'online_library.wsgi.application'
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://online-library-chr.azurewebsites.net'
+]
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
